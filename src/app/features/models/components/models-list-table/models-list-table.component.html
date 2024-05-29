@@ -1,0 +1,24 @@
+<table appTable>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (model of models; track $index) {
+    <tr>
+      <th scope="row">{{ model.id }}</th>
+      <app-button [routerLink]="['/management/models/detail', model.id]" variant="warning">
+        <td>{{ model.name }}</td>
+      </app-button> <td>
+      <div class="d-flex justify-content-end">
+        <app-button [routerLink]="['/management/models/edit', model.id]" variant="warning">Edit</app-button>
+        <app-button class="ms-3" (click)="deleteModel(model.id!)" variant="danger">Delete</app-button>
+      </div>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

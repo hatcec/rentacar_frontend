@@ -1,0 +1,23 @@
+<div class="min-vh-100 d-flex flex-column">
+    <app-navbar [title]="navTitle" [navItems]="navitems" [endContentTemplate]="navbarEndContent">
+    <!-- ngcontent örneği -->
+     <ng-template #navbarEndContent>
+        <button
+        class="btn btn-outline-primary"
+        type="button"
+        data-bs-toogle="modal"
+        data-bs-target="#loginModal">
+        login
+
+        </button>
+     </ng-template>
+    
+    </app-navbar>
+    
+    <main class="container-fluid flex-grow-1 my-5">
+        <ng-content ></ng-content>
+        
+    </main>
+
+    <app-footercomponent class="mt-5"></app-footercomponent>
+</div>
