@@ -18,11 +18,12 @@ import {
   TransmissionsControllerService,
 } from '../../../../shared/services/api';
 import { Router } from '@angular/router';
+import { DemoAngularMaterailModule } from '../../../../DemoAngularMaterialModule';
 
 @Component({
   selector: 'app-add-transmission-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule,DemoAngularMaterailModule, ButtonComponent],
   templateUrl: './add-transmission-form.component.html',
   styleUrl: './add-transmission-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

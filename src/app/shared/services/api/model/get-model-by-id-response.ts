@@ -18,5 +18,6 @@ export interface GetModelByIdResponse {
     fuelId?: number;
     transmissionId?: number;
     createdDate?: string;
+    imageUrl?: string;
 }
 

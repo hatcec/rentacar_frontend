@@ -15,11 +15,12 @@ import {
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { FuelsControllerService } from '../../../../shared/services/api';
 import { Router } from '@angular/router';
+import { DemoAngularMaterailModule } from '../../../../DemoAngularMaterialModule';
 
 @Component({
   selector: 'app-edit-fuel-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule,DemoAngularMaterailModule, ButtonComponent],
   templateUrl: './edit-fuel-form.component.html',
   styleUrl: './edit-fuel-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

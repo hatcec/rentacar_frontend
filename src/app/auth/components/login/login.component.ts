@@ -20,7 +20,7 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authServive: AuthService,
+    private readonly authServive: AuthService,
     private router: Router,
   ){  }
 
@@ -37,23 +37,15 @@ export class LoginComponent {
     this.authServive.login(this.loginForm.value).subscribe((res) => {
       console.log(res);
 
-      if(res.userId != null){
+      //if(res.userId != null){
         const user = {
           userId: res.userId,
           role: res.userRole
         }
-        StorageService.saveToken(res.jwt);
-        StorageService.saveUser(user);
-        if(StorageService.isAdminLoggedIn())
-          this.router.navigateByUrl("/admin/dashboard");
-        else
-        this.router.navigateByUrl("/customer/dashboard")
-
-      } else {
+        localStorage.setItem('token',res.jwt);
+        localStorage.setItem('role', res.role);
+        this.router.navigate(['/profile']);
         
-        console.error("bad crediantials");
-        
-      }
     })
   }
 }

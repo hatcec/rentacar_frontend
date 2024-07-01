@@ -25,6 +25,7 @@ import {
 } from '../../../../shared/services/api';
 import { Router, RouterModule } from '@angular/router';
 import { DemoAngularMaterailModule } from '../../../../DemoAngularMaterialModule';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-model-form',
@@ -54,7 +55,7 @@ export class AddModelFormComponent implements OnInit {
     private brandsService: BrandsControllerService,
     private fuelsService: FuelsControllerService,
     private transmissionsService: TransmissionsControllerService,
-   
+    private snackBar:MatSnackBar,   
     private router: Router
   ) { }
 
@@ -117,7 +118,8 @@ export class AddModelFormComponent implements OnInit {
       },
       complete: () => {
         // Complete: Observable'dan gelen veri akışının tamamlandığını bildiren fonksiyon. Complete çalıştığı taktirde observable'dan gelen veri akışı sona erer.
-        this.formMessage = 'Model added successfully';
+       this.snackBar.open('Model added successfully', 'Close', {duration:5000});
+        // this.formMessage = 'Model added successfully';
         this.change.markForCheck();
 
         setTimeout(() => {
@@ -130,6 +132,7 @@ export class AddModelFormComponent implements OnInit {
   onFormSubmit() {
     if (this.form.invalid) {
       this.formMessage = 'Please fill all required fields';
+      this.snackBar.open('Please fill all required fields', 'Close', {duration:5000});
       return;
     }
 

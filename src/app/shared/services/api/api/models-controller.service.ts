@@ -27,6 +27,8 @@ import { GetAllModelResponse } from '../model/get-all-model-response';
 // @ts-ignore
 import { GetModelByIdResponse } from '../model/get-model-by-id-response';
 // @ts-ignore
+import { UpdateModelRequest } from '../model/update-model-request';
+// @ts-ignore
 import { UpdateTransmission400Response } from '../model/update-transmission400-response';
 // @ts-ignore
 import { UpdatedModelResponse } from '../model/updated-model-response';
@@ -381,9 +383,9 @@ export class ModelsControllerService implements ModelsControllerServiceInterface
     public updateModel(requestParameters: UpdateModelRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdatedModelResponse>>;
     public updateModel(requestParameters: UpdateModelRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UpdatedModelResponse>>;
     public updateModel(requestParameters: UpdateModelRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        const body = requestParameters.body;
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateModel.');
+        const updateModelRequest = requestParameters.updateModelRequest;
+        if (updateModelRequest === null || updateModelRequest === undefined) {
+            throw new Error('Required parameter updateModelRequest was null or undefined when calling updateModel.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -436,7 +438,7 @@ export class ModelsControllerService implements ModelsControllerServiceInterface
         return this.httpClient.request<UpdatedModelResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: body,
+                body: updateModelRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

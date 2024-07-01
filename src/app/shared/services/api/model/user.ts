@@ -18,13 +18,14 @@ export interface User {
     lastName?: string;
     email?: string;
     password?: string;
+    city?: string;
     role?: User.RoleEnum;
+    accountNonExpired?: boolean;
+    credentialsNonExpired?: boolean;
     enabled?: boolean;
     authorities?: Array<GrantedAuthority>;
-    accountNonLocked?: boolean;
     username?: string;
-    credentialsNonExpired?: boolean;
-    accountNonExpired?: boolean;
+    accountNonLocked?: boolean;
 }
 export namespace User {
     export type RoleEnum = 'USER' | 'ADMIN';

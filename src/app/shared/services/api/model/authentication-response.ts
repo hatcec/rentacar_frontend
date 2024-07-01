@@ -9,18 +9,30 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { User } from './user';
 
 
 export interface AuthenticationResponse { 
+    statusCode?: number;
+    error?: string;
+    message?: string;
     jwt?: string;
-    userRole?: AuthenticationResponse.UserRoleEnum;
-    userId?: number;
+    refreshToken?: string;
+    expirationTime?: string;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    password?: string;
+    city?: string;
+    role?: AuthenticationResponse.RoleEnum;
+    users?: User;
+    ourUsersList?: Array<User>;
 }
 export namespace AuthenticationResponse {
-    export type UserRoleEnum = 'USER' | 'ADMIN';
-    export const UserRoleEnum = {
-        User: 'USER' as UserRoleEnum,
-        Admin: 'ADMIN' as UserRoleEnum
+    export type RoleEnum = 'USER' | 'ADMIN';
+    export const RoleEnum = {
+        User: 'USER' as RoleEnum,
+        Admin: 'ADMIN' as RoleEnum
     };
 }
 

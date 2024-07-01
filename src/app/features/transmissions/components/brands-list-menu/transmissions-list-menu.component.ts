@@ -4,8 +4,8 @@ import {
   MenuComponent,
   MenuItem,
 } from '../../../../shared/components/menu/menu.component';
+import { TransmissionsListBaseComponent } from '../brands-list-base/transmissions-list-base.component';
 // import { TransmissionListItemDto } from '../../models/transmission-list-item-dto';
-import { TransmissionsListBaseComponent } from '../transmissions-list-base/transmissions-list-base.component';
 // import { TransmissionsService } from '../../services/transmissions.service';
 
 @Component({
@@ -20,6 +20,9 @@ export class TransmissionsListMenuComponent
   extends TransmissionsListBaseComponent
   implements OnInit
 {
+  override ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
   // override ngOnInit(): void {
   //   console.log('TransmissionsListMenuComponent');
   //   super.ngOnInit();

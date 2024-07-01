@@ -18,11 +18,14 @@ import {
   BrandsControllerService,
 } from '../../../../shared/services/api';
 import { Router } from '@angular/router';
+import { DemoAngularMaterailModule } from '../../../../DemoAngularMaterialModule';
+import { response } from 'express';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-brand-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule,DemoAngularMaterailModule, ButtonComponent],
   templateUrl: './add-brand-form.component.html',
   styleUrl: './add-brand-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,7 +38,8 @@ export class AddBrandFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private brandServices: BrandsControllerService,
     private change: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +71,11 @@ export class AddBrandFormComponent implements OnInit {
       },
       // Complete: Observable'dan gelen veri akışının tamamladığını bildiren fonksiyon, eğer complete çalışırsa observable'dan gelen veri akışı sona erer.
       complete: () => {
-        this.formMessage = 'Brand added successfully';
+        
+          this.snackBar.open('Brand Added Successfully', 'Close', { duration: 5000 });
+  
+          this.router.navigateByUrl('management/brands')
+      
         this.form.reset();
         this.change.markForCheck();
 
@@ -80,7 +88,7 @@ export class AddBrandFormComponent implements OnInit {
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = 'Please fill all required fields';
+      this.snackBar.open( 'Please fill all required fields' ,'Close',{duration:5000});
       return;
     }
 

@@ -3,8 +3,11 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Created</th>
-        <th scope="col"></th>
+        <th scope="col"><div class="d-flex justify-content-end">
+          <app-button routerLink="/management/transmissions/create" variant="primary"
+>Create Transmission</app-button
+>
+        </div></th>
       </tr>
     </thead>
     <tbody>
@@ -12,7 +15,6 @@
       <tr>
         <th scope="row">{{ transmission.id }}</th>
         <td>{{ transmission.name }}</td>
-        <td>{{ transmission.createdDate }}</td>
         <td>
           <div class="d-flex justify-content-end">
             <app-button

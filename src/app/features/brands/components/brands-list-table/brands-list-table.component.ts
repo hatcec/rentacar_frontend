@@ -9,6 +9,7 @@ import { TableDirective } from '../../../../shared/directives/table.directive';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { RouterModule } from '@angular/router';
 import { BrandsControllerService } from '../../../../shared/services/api';
+import { DemoAngularMaterailModule } from '../../../../DemoAngularMaterialModule';
 
 @Component({
   selector: 'app-brands-list-table',
@@ -18,6 +19,7 @@ import { BrandsControllerService } from '../../../../shared/services/api';
     TableDirective,
     ButtonComponent,
     RouterModule,
+    DemoAngularMaterailModule
    
   ],
   templateUrl: './brands-list-table.component.html',

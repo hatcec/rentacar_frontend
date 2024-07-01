@@ -1,1 +1,57 @@
-<p>customer-dashboard works!</p>
+
+<div class="product-list">
+    <!-- @for (model of getAllCar(); track $index){} -->
+    <mat-card class="product-card " *ngFor="let car of cars">
+        <div class="product-image">
+             
+           {{car.imageUrl}}
+        </div>
+        <div class="product-detail">
+            <h2 class="product-name">{{car.modelYear}}</h2>
+            <h2 class="product-name">{{car.state}}</h2>
+            <mat-divider></mat-divider>
+            <div class="product-info">
+                <div class="info-raw">
+                    <span class="info-label">Daily Price : </span>
+                    <span class="info-value">{{car.dailyPrice}}</span>
+                </div>
+                <div class="info-raw">
+                    <span class="info-label">Model Name : </span>
+                    <span class="info-value" text>{{car.modelName}}</span>
+                    
+                </div>
+                <div class="info-raw">
+                    <span class="info-label">Brand Name : </span>
+                    <span class="info-value" text>{{car.brandName}}</span>
+                    
+                </div>
+                <div class="info-raw">
+                    <span class="info-label">Fuel Name : </span>
+                    <span class="info-value" text>{{car.fuelName}}</span>
+                    
+                </div>
+                <div class="info-raw">
+                    <span class="info-label">Transmission Name : </span>
+                    <span class="info-value" text>{{car.transmissionName}}</span>
+                    
+                </div> 
+
+            </div>
+            <mat-divider></mat-divider>
+            <div class="action">
+                <!-- <button mat-raised-button class="update-button"
+                [routerLink]="['/management/cars/edit', car.id]"
+                variant="warning"
+                >Edit</button>
+              <button
+              mat-raised-button class="delete"
+                (click)="deleteCar(car.id!)"
+                variant="danger"
+                >Delete</button
+              > -->
+                 <button mat-raised-button color="primary" class="update-button"
+                 [routerLink]="['/customer/rentcar/', car.id]">RENT</button>
+            </div>
+        </div>
+    </mat-card>
+</div>

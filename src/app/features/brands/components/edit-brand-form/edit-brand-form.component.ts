@@ -15,11 +15,13 @@ import {
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { BrandsControllerService } from '../../../../shared/services/api';
 import { Router } from '@angular/router';
+import { DemoAngularMaterailModule } from '../../../../DemoAngularMaterialModule';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-brand-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, ButtonComponent,DemoAngularMaterailModule],
   templateUrl: './edit-brand-form.component.html',
   styleUrl: './edit-brand-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,6 +36,7 @@ export class EditBrandFormComponent implements OnInit {
     private fb: FormBuilder,
     private brandsService: BrandsControllerService,
     private change: ChangeDetectorRef,
+    private snackBar:MatSnackBar,
     private router: Router
   ) {}
 
@@ -65,14 +68,21 @@ export class EditBrandFormComponent implements OnInit {
       })
       .subscribe({
         complete: () => {
-          this.formMessage = 'Brand updated successfully';
-          this.change.markForCheck();
+        
+          this.snackBar.open('Brand Updated Successfully', 'Close', { duration: 5000 });
+  
+          this.router.navigateByUrl('management/brands')
+      
+        this.form.reset();
+        this.change.markForCheck();
 
-          setTimeout(() => {
-            this.router.navigate(['/management', 'brands']);
-          }, 2000);
-        },
-      });
+        setTimeout(() => {
+          this.router.navigate(['/management', 'brands']);
+        }, 2000);
+      },
+    });
+
+
   }
 
   onFormSubmit() {

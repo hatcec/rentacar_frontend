@@ -17,6 +17,7 @@ import { CreateModelRequest } from '../model/models';
 import { CreatedModelResponse } from '../model/models';
 import { GetAllModelResponse } from '../model/models';
 import { GetModelByIdResponse } from '../model/models';
+import { UpdateModelRequest } from '../model/models';
 import { UpdateTransmission400Response } from '../model/models';
 import { UpdatedModelResponse } from '../model/models';
 
@@ -37,7 +38,7 @@ export interface GetModelByIdRequestParams {
 }
 
 export interface UpdateModelRequestParams {
-    body: object;
+    updateModelRequest: UpdateModelRequest;
 }
 
 

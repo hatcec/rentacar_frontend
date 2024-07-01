@@ -18,5 +18,6 @@ export interface UpdatedModelResponse {
     fuelId?: number;
     transmissionId?: number;
     updatedDate?: string;
+    imageUrl?: string;
 }
 

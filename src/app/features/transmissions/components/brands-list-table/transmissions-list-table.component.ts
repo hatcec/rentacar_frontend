@@ -4,11 +4,11 @@ import {
   ChangeDetectorRef,
   Component,
 } from '@angular/core';
-import { TransmissionsListBaseComponent } from '../transmissions-list-base/transmissions-list-base.component';
 import { TableDirective } from '../../../../shared/directives/table.directive';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { RouterModule } from '@angular/router';
 import { TransmissionsControllerService } from '../../../../shared/services/api';
+import { TransmissionsListBaseComponent } from '../brands-list-base/transmissions-list-base.component';
 
 @Component({
   selector: 'app-transmissions-list-table',

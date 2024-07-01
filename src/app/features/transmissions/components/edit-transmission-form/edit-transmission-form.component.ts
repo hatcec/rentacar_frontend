@@ -15,11 +15,12 @@ import {
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { TransmissionsControllerService } from '../../../../shared/services/api';
 import { Router } from '@angular/router';
+import { DemoAngularMaterailModule } from '../../../../DemoAngularMaterialModule';
 
 @Component({
   selector: 'app-edit-transmission-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, DemoAngularMaterailModule, ButtonComponent],
   templateUrl: './edit-transmission-form.component.html',
   styleUrl: './edit-transmission-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,0 +1,35 @@
+<app-home-layout>
+
+ <div class="container">
+    <table  class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">City</th>
+          <th scope="col"><div class="d-flex justify-content-end">
+            <app-button routerLink="/signup" variant="primary"
+  >Create User</app-button
+  >
+          </div></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users" key="user.id">
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.city }}</td>
+          <td>
+            <button class="delete-button" (click)="deleteUser(user.id)">Delete</button>
+            <button class="update-button" (click)="navigateToUpdate(user.id)">Update</button>
+        </td>
+          
+      
+      </tbody>
+    </table>
+   </div> 
+</app-home-layout>

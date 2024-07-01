@@ -3,7 +3,7 @@
     <mat-card class="product-card " *ngFor="let car of cars">
         <div class="product-image">
             <!-- <img [src]="" -->
-            <h2>image</h2>
+            {{car.imageUrl}}
         </div>
         <div class="product-detail">
             <h2 class="product-name">{{car.modelYear}}</h2>

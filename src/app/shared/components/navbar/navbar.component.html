@@ -1,50 +1,61 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
   <div class="container-fluid">
+
     @if (title) {
-      <a class="navbar-brand" [routerLink]="title.routerLink"> {{ title.text }} </a>
+    <a class="navbar-brand" [routerLink]="title.routerLink"> {{ title.text }} </a>
     }
 
-    <app-button
-      class="navbar-toggler border-0 text-light"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      variant="light"
-      >
+
+    <app-button class="navbar-toggler border-0 text-light" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation" variant="light">
       <span class="navbar-toggler-icon text-light"></span>
     </app-button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        @for (navItem of navItems; track navItem) {
-          <li class="nav-item">
-            @if (!isUrl(navItem.link)) {
-              <a
-                class="nav-link"
-                aria-current="page"
-                [routerLink]="!isUrl(navItem.link) ? navItem.link : null"
-                routerLinkActive="active"
-                >{{ navItem.label }}</a
-                >
-              } @else {
-                <a
-                  class="nav-link"
-                  aria-current="page"
-                  [href]="navItem.link"
-                  >{{navItem.label}}</a
-                  >
-                }
-              </li>
-            }
-          </ul>
 
-          <!--      <ng-content></ng-content>-->
-          @if (endContentTemplate) {
-            <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        @if (isAdmin) {
+        @for (navItem of navItems; track navItem) {
+        <li class="nav-item">
+          @if (!isUrl(navItem.link)) {
+          <a class="nav-link" aria-current="page" [routerLink]="!isUrl(navItem.link) ? navItem.link : null"
+            routerLinkActive="active">{{ navItem.label }}</a>
+          } @else {
+          <a class="nav-link" aria-current="page" [href]="navItem.link">{{navItem.label}}</a>
           }
-        </div>
-      </div>
-    </nav>
+        </li>
+        }
+        <!-- <button *ngIf="!isAuthenticated" mat-button routerLinkActive="active" routerLink="/login">Login</button>
+  
+        <button *ngIf="isAuthenticated" mat-button routerLinkActive="active" (click)="logout()">Logout</button> -->
+        }
+        @else if (isAuthenticated) {
+              <li class="nav-item" aria-current="page" *ngIf = "isAuthenticated"><a routerLink = "/about" routerLinkActive="active">About</a></li>
+              <li  class="nav-item" aria-current="page" *ngIf = "isAuthenticated"><a routerLink = "/profile" routerLinkActive="active">Profile</a></li>
+              <li class="nav-item" aria-current="page" *ngIf = "isAuthenticated"><a routerLink = "/customer/dashboard" routerLinkActive="active">Cars</a></li>
+            
+         
+      
+            }
+        <button *ngIf="!isAuthenticated" mat-button routerLinkActive="active" routerLink="/login">Login</button>
+
+        <button *ngIf="isAuthenticated" mat-button routerLinkActive="active" (click)="logout()">Logout</button>
+
+
+      </ul>
+
+
+    </div>
+  </div>
+ 
+  @if (endContentTemplate) {
+  <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
+  }
+
+
+
+</nav>
+

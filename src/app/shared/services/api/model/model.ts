@@ -25,5 +25,6 @@ export interface Model {
     fuel?: Fuel;
     transmission?: Transmission;
     cars?: Array<Car>;
+    imageUrl?: string;
 }
 

@@ -7,15 +7,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [
     CommonModule,
   ],
-  template: `<footer class="bg-dark text-light p-3">
-    <div class="container">
-      footer component works!
-      </div> 
-    </footer>`,
-  styles: `
-  footer{
-    height:4rem;
-  }`,
+  templateUrl:'./footercomponent.component.html',
+  styleUrl:'./footercomponent.component.scss',
+ 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FootercomponentComponent { }

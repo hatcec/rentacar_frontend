@@ -1,18 +1,54 @@
-<form [formGroup]="form" (ngSubmit)="onFormSubmit()">
-  @if (formMessage) {
-  <small>{{ formMessage }}</small>
-  }
 
-  <div class="mt-3">
-    <label for="nameInput" class="form-text text-muted">Model Name:</label>
-    <input
-      formControlName="name"
-      type="text"
-      placeholder="Enter name"
-      id="nameInput"
-      class="ms-3"
-    />
+<div class="container">
+  <mat-card>
+    <mat-card-title>UPDATE MODEL</mat-card-title>
+    <mat-card-content>
+  <!-- Reactive Forms -->
+  <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+    <!-- <small *ngIf="errorMessage"> {{errorMessage}} </small> -->
+    <!-- Angular 17: -->
+    @if (formMessage) {
+    <small>{{ formMessage }}</small>
+    }
+    
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Select a Model</mat-label>
+      <mat-select formControlName="brandId" name="brandId">
+        <mat-option *ngFor="let brand of brands" [value]="brand.id">
+          {{brand.name}}
+        </mat-option>
+        <mat-error *ngIf="form.get('brandId')?.hasError('required')">This Input is Required!</mat-error>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Select a Fuel</mat-label>
+      <mat-select formControlName="fuelId" name="fuelId">
+        <mat-option *ngFor="let fuel of fuels" [value]="fuel.id">
+          {{fuel.name}}
+        </mat-option>
+        <mat-error *ngIf="form.get('fuelId')?.hasError('required')">This Input is Required!</mat-error>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Select a Transmission</mat-label>
+      <mat-select formControlName="transmissionId" name="transmissionId">
+        <mat-option *ngFor="let transmission of transmissions" [value]="transmission.id">
+          {{transmission.name}}
+        </mat-option>
+        <mat-error *ngIf="form.get('transmissionId')?.hasError('required')">This Input is Required!</mat-error>
+      </mat-select>
+  
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Model Name</mat-label>
+      <input matInput placeholder="Model Name" formControlName="name">
+    </mat-form-field>
+  
+    <app-button type="submit" class="mt-3"> Update Model </app-button>
+  </form>
+  </mat-card-content>
+  </mat-card>
   </div>
-
-  <app-button type="submit" class="mt-3"> Edit Model </app-button>
-</form>
+ 
+   

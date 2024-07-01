@@ -34,6 +34,8 @@ export class ModelsCardListComponent
   implements OnInit {
 
   @Input() brandId: number | null = null;
+  @Input() modelId: number | null = null;
+  imageUrl: any;
 
   get filteredModels(): GetAllModelResponse[] {
     let newList: GetAllModelResponse[] = this.models;
@@ -50,7 +52,8 @@ export class ModelsCardListComponent
     private brandsService: BrandsControllerService,
     private fuelsService: FuelsControllerService,
     private transmissionsService: TransmissionsControllerService,
-    change: ChangeDetectorRef
+    change: ChangeDetectorRef,
+    private imageUrlService: ModelsControllerService
   ) {
     super(modelControllerService, change);
   }
@@ -63,8 +66,15 @@ export class ModelsCardListComponent
   brands: GetAllBrandResponse[] = [];
   fuels: GetAllFuelResponse[] = [];
   transmissions: GetAllTransmissionResponse[] = [];
+  imageUrls: GetAllModelResponse[] = [];
+
+
 
   getModelRelations(): void {
+    this.imageUrlService.getAllModel().subscribe((imageUrls) => {
+      this.imageUrls = imageUrls;
+      this.change.markForCheck();
+    })
     // Brand
     this.brandsService.getAllBrand().subscribe((brands) => {
       this.brands = brands;
@@ -90,8 +100,11 @@ export class ModelsCardListComponent
     return `Brand: ${this.brands.find((brand) => brand.id === model.brandId)?.name
       }, Fuel: ${this.fuels.find((f) => f.id === model.fuelId)?.name
       }, Transmission: ${this.transmissions.find((t) => t.id === model.transmissionId)?.name
-      }`;
+      }, ImageUrl: ${this.imageUrls.find((u) => u.imageUrl === model.imageUrl)?.imageUrl}
+        `;
   }
+
+      
   navigateToDetail(modelId: number | undefined) {
     this.router.navigate(['/management/models/detail', modelId]);
   }

@@ -13,21 +13,37 @@ import { HttpHeaders }                                       from '@angular/comm
 
 import { Observable }                                        from 'rxjs';
 
-import { AuthenticationRequest } from '../model/models';
 import { AuthenticationResponse } from '../model/models';
-import { SignupRequest } from '../model/models';
 import { UpdateTransmission400Response } from '../model/models';
+import { User } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface CreateAuthenticationTokenRequestParams {
-    authenticationRequest: AuthenticationRequest;
+export interface CreateCustomerRequestParams {
+    authenticationResponse: AuthenticationResponse;
 }
 
-export interface CreateCustomerRequestParams {
-    signupRequest: SignupRequest;
+export interface DeleteUSerRequestParams {
+    userId: number;
+}
+
+export interface GetUSerByIDRequestParams {
+    userId: number;
+}
+
+export interface LoginRequestParams {
+    authenticationResponse: AuthenticationResponse;
+}
+
+export interface RefreshTokenRequestParams {
+    authenticationResponse: AuthenticationResponse;
+}
+
+export interface UpdateUserRequestParams {
+    userId: number;
+    user: User;
 }
 
 
@@ -40,13 +56,53 @@ export interface AuthenticationControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    createAuthenticationToken(requestParameters: CreateAuthenticationTokenRequestParams, extraHttpRequestParams?: any): Observable<AuthenticationResponse>;
+    createCustomer(requestParameters: CreateCustomerRequestParams, extraHttpRequestParams?: any): Observable<object>;
 
     /**
      * 
      * 
 * @param requestParameters
      */
-    createCustomer(requestParameters: CreateCustomerRequestParams, extraHttpRequestParams?: any): Observable<object>;
+    deleteUSer(requestParameters: DeleteUSerRequestParams, extraHttpRequestParams?: any): Observable<AuthenticationResponse>;
+
+    /**
+     * 
+     * 
+*/
+    getAllUsers(extraHttpRequestParams?: any): Observable<AuthenticationResponse>;
+
+    /**
+     * 
+     * 
+*/
+    getMyProfile(extraHttpRequestParams?: any): Observable<AuthenticationResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getUSerByID(requestParameters: GetUSerByIDRequestParams, extraHttpRequestParams?: any): Observable<AuthenticationResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    login(requestParameters: LoginRequestParams, extraHttpRequestParams?: any): Observable<AuthenticationResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    refreshToken(requestParameters: RefreshTokenRequestParams, extraHttpRequestParams?: any): Observable<AuthenticationResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    updateUser(requestParameters: UpdateUserRequestParams, extraHttpRequestParams?: any): Observable<AuthenticationResponse>;
 
 }

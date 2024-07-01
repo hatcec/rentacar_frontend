@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { TransmissionsControllerService, GetAllTransmissionResponse } from '../../../../shared/services/api';
-import { TransmissionsService } from '../../services/transmissions.service';
+
 
 @Component({
   standalone: true,

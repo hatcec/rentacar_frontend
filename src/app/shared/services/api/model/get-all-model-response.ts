@@ -21,5 +21,6 @@ export interface GetAllModelResponse {
     transmissionId?: number;
     transmissionName?: string;
     createdDate?: string;
+    imageUrl?: string;
 }
 

@@ -54,7 +54,7 @@ export class StorageService {
   static isCustomerLoggedIn(): boolean {
     if (this.getToken() == null) return false;
     const role: string = this.getUserRole();
-    return role == "CUSTOMER";
+    return role == "USER";
 
   }
 

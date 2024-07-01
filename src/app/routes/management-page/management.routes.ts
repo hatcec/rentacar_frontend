@@ -12,16 +12,18 @@ import { ManagementEditFuelPageComponent } from './management-fuels-page/managem
 import { ManagementCarsPageComponent } from './management-cars-page/management-cars-page.component';
 import { ManagementEditCarPageComponent } from './management-cars-page/management-edit-car-page/management-edit-car-page.component';
 import { ManagementCreateCarPageComponent } from './management-cars-page/management-create-car-page/management-create-car-page.component';
+import { StorageService } from '../../auth/services/storage/storage.service';
+
 //import { authGuard } from '../../shared/guards/auth.guard';
 
 export const managementRoutes: Routes = [
   {
     path: 'management', // localhost:4200/management
-    //canActivate: [authGuard], // Angular Guard yapıları ilgili route'a giriş yapmadan önce çalışacak olan yapılar
-    //   data: {
-    //     // Route'a özel veri tutma
-    //     requiredRoles: ['admin'],
-    //   },
+    // canActivate: [authGuard], // Angular Guard yapıları ilgili route'a giriş yapmadan önce çalışacak olan yapılar
+    //    data: {
+    //      // Route'a özel veri tutma
+    //      requiredRoles: ['admin'],
+    //    },
     component: ManagementPageComponent,
     // İlk karşılaştığı <router-outlet>'e ManagementPageComponent'i yerleştirir.
     children: [

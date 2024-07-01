@@ -1,10 +1,14 @@
-<table appTable>
+<div class="container">
+  <table  class="table table-hover">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Created</th>
-        <th scope="col"></th>
+        <th scope="col">Fuel Name</th>
+        <th scope="col"><div class="d-flex justify-content-end">
+          <app-button routerLink="/management/fuels/create" variant="primary"
+>Create Fuel</app-button
+>
+        </div></th>
       </tr>
     </thead>
     <tbody>
@@ -12,23 +16,14 @@
       <tr>
         <th scope="row">{{ fuel.id }}</th>
         <td>{{ fuel.name }}</td>
-        <td>{{ fuel.createdDate }}</td>
         <td>
           <div class="d-flex justify-content-end">
-            <app-button
-              [routerLink]="['/management/fuels/edit', fuel.id]"
-              variant="warning"
-              >Edit</app-button
-            >
-            <app-button
-              class="ms-3"
-              (click)="deleteFuel(fuel.id!)"
-              variant="danger"
-              >Delete</app-button
-            >
+            <app-button [routerLink]="['/management/fuels/edit', fuel.id]" variant="primary">Edit</app-button>
+            <app-button class="ms-3" (click)="deleteFuel(fuel.id!)" variant="danger">Delete</app-button>
           </div>
         </td>
       </tr>
       }
     </tbody>
   </table>
+</div>

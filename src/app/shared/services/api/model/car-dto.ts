@@ -26,5 +26,6 @@ export interface CarDto {
     fuelName?: string;
     trasnmissionId?: number;
     transmissionName?: string;
+    imageUrl?: string;
 }
 

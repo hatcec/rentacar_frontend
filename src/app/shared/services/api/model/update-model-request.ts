@@ -12,10 +12,7 @@
 
 
 export interface UpdateModelRequest { 
-    id?: number;
-    name?: string;
-    brandId?: number;
-    fuelId?: number;
-    transmissionId?: number;
+    name: string;
+    imageUrl?: string;
 }
 
